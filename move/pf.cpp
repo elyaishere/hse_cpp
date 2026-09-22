@@ -31,7 +31,12 @@ void inspect(const String&&) {
 
 template<class T>
 void forward(T&& value) {
-    inspect(value);
+    // always binds to lvalue
+    // inspect(value);
+    // always binds to rvalue
+    // inspect(std::move(value));
+    // perfect /* forwarding */
+    inspect(std::forward<T>(value));
 }
 
 int main() {
