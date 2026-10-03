@@ -36,7 +36,10 @@ private:
 
 
 int main() {
-    std::shared_ptr<int> ptr;
+    std::shared_ptr<int> ptr(new int(10));
+    std::weak_ptr<int> w(ptr);
 
-    std::cout << sizeof(shared_ptr<int>) << std::endl;
+    std::cout << ptr.use_count() << std::endl;
+
+    std::cout << sizeof(std::shared_ptr<int>) << std::endl;
 }
