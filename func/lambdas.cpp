@@ -24,5 +24,19 @@ int main () {
     //     return n * fact(n - 1);
     // };
 
-    
+    // recursive
+    // http://pedromelendez.com/blog/2015/07/16/recursive-lambdas-in-c14/
+
+    // https://godbolt.org/z/33e8hMohW
+    std::function<int(int)> f = [&f] (int n) {
+        if (n <= 1) return 1;
+        return n * f(n - 1);
+    };
+    std::cout << f(5) << std::endl;
+
+
+    // class function {
+    //     Any f; // union { void* ; char[]}
+    //     F* invoker;
+    // };
 }

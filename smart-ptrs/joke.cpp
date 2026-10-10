@@ -5,13 +5,12 @@
 template <typename T>
 void print(T&& ptr) {
     void* buf[sizeof(ptr) / sizeof(void*)];
-    memcpy(buf, &ptr, sizeof(ptr) / sizeof(void*));
+    memcpy(buf, &ptr, sizeof(ptr));
     for (void* p : buf) {
         std::cout << p << ' ';
     }
     std::cout << std::endl;
 }
-
 
 struct A {
     void foo() {
@@ -30,6 +29,7 @@ struct B {
 };
 
 int main() {
+    // look at assembly
     void (A::*pa)() = &A::foo;
     std::cout << sizeof(pa) << std::endl;
     print(pa);
