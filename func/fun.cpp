@@ -4,7 +4,7 @@
 
 template <typename T>
 void print(T&& ptr) {
-    void* buf[sizeof(ptr) / sizeof(void*)];
+    void* buf[sizeof(ptr)];
     memcpy(buf, &ptr, sizeof(ptr));
     for (void* p : buf) {
         std::cout << p << ' ';
